@@ -23,16 +23,17 @@ function launchModal() {
 //ISSUE 1 : CLOSE MODAL
 //DOM Element
 const closeBtn = document.querySelectorAll(".close");
-const thanksModalBg = document.querySelector(".modal-confirm");
+const closeBtn2 = document.querySelectorAll(".close2");
+const confirmedModalBg = document.querySelector(".modal-confirm");
 
 //close modal function
 const closeModal = () => {
   modalbg.style.display = "none";
-  thanksModalBg.style.display = "none";
+  confirmedModalBg.style.display = "none";
 };
 //close modal event
 closeBtn.forEach((element) => element.addEventListener("click", closeModal));
-
+closeBtn2.forEach((element) => element.addEventListener("click", closeModal));
 //ISSUE 2 + 3 + 4: VALIDATION FORM
 //DOM element
 const prenom = document.getElementById("first");
@@ -61,8 +62,8 @@ const errCondition = document.querySelector(".err-condition");
 //error message if all fields are not filled
 
 //error message for incorrect inputs
-let isFormValid = true;
 const errorFocusName = () => {
+  let isFormValid = true;
   if (!namesRegex.test(prenom.value)) {
     errFistName.innerHTML =
       "Veuillez entrer au minimum 2 caractères pour ce champ";
@@ -75,6 +76,7 @@ const errorFocusName = () => {
   return isFormValid;
 };
 const errorFocusSurname = () => {
+  let isFormValid = true;
   if (!namesRegex.test(nom.value)) {
     errLastName.innerHTML =
       "Veuillez entrer au minimum 2 caractères pour ce champ";
@@ -87,6 +89,7 @@ const errorFocusSurname = () => {
   return isFormValid;
 };
 const errorFocusEmail = () => {
+  let isFormValid = true;
   if (!emailRegex.test(email.value)) {
     errEmail.innerHTML = "Format d'adresse E-mail incorrect";
     email.style.borderColor = "#F00";
@@ -98,6 +101,7 @@ const errorFocusEmail = () => {
   return isFormValid;
 };
 const errorFocusBirthdate = () => {
+  let isFormValid = true;
   if (!birthdate.value) {
     errBirthdate.innerHTML = "Vous devez entrer votre date de naissance";
     birthdate.style.borderColor = "#F00";
@@ -109,6 +113,7 @@ const errorFocusBirthdate = () => {
   return isFormValid;
 };
 const errorFocusNumber = () => {
+  let isFormValid = true;
   if (!numbersRegex.test(quantity.value)) {
     errNumber.innerHTML = "Veuillez entrer des chiffres uniquement";
     quantity.style.borderColor = "#F00";
@@ -120,6 +125,7 @@ const errorFocusNumber = () => {
   return isFormValid;
 };
 const errorFocusLocation = () => {
+  let isFormValid = true;
   const locations = document.querySelectorAll("[name=location]:checked");
   if (locations.length < 1) {
     errLocation.innerHTML = "Veillez faire un choix";
@@ -130,6 +136,7 @@ const errorFocusLocation = () => {
   return isFormValid;
 };
 const errorFocusCondition = () => {
+  let isFormValid = true;
   if (!userCondition.checked) {
     errCondition.innerHTML =
       "</br>Vérifiez que vous acceptez les termes et conditions !";
@@ -139,23 +146,26 @@ const errorFocusCondition = () => {
   }
   return isFormValid;
 };
+
 function sendForm(e) {
   e.preventDefault();
-  errorFocusCondition();
-  errorFocusName();
-  errorFocusSurname();
-  errorFocusEmail();
-  errorFocusBirthdate();
-  errorFocusNumber();
-  errorFocusLocation();
-  if (isFormValid) {
+  const isFormValid =
+    errorFocusName() &&
+    errorFocusSurname() &&
+    errorFocusEmail() &&
+    errorFocusBirthdate() &&
+    errorFocusNumber() &&
+    errorFocusCondition() &&
+    errorFocusLocation();
+  console.log(isFormValid);
+  if (!isFormValid) {
+    modalbg.style.display = "block";
+    confirmedModalBg.style.display = "none";
+  } else if (isFormValid) {
     let modalbg = document.querySelector(".bground");
     let thanksModalBg = document.querySelector(".modal-confirm");
     modalbg.style.display = "none";
-    thanksModalBg.style.display = "block";
-  } else if (!isFormValid) {
-    modalbg.style.display = "block";
-    thanksModalBg.style.display = "none";
+    confirmedModalBg.style.display = "block";
   }
   return isFormValid;
 }
@@ -163,11 +173,12 @@ function sendForm(e) {
 form.addEventListener("submit", sendForm);
 
 //reset form after validation
+const closeReset = document.getElementById("close-reset");
 const resetBtn = document.getElementById("reset");
 const entries = document.querySelectorAll(".entries");
 const reset = () => {
-  entries.forEach((input) => (input.value = ""));
-  thanksModalBg.style.display = "none";
+  entries.forEach((inpt) => (inpt.value = ""));
+  confirmedModalBg.style.display = "none";
 };
-
+closeReset.addEventListener("click", reset);
 resetBtn.addEventListener("click", reset);

@@ -61,7 +61,6 @@
               action="index.html"
               method="get"
               id="form"
-              onsubmit="sendForm()"
             >
               <div
                 class="formData ">
@@ -227,15 +226,15 @@
       <!--succeed validation window-->
       <div class=" modal-confirm">
         <div class="content">
-          <span class="close close2"></span>
+          <span class="close" id="close-reset"></span>
           <div class="modal-body">
                <p>Merci pour<br/> votre inscription</p>
           </div>
           <input
-          class="btn-submit"
+          class="btn-submit close2"
           type="submit"
           class="button"
-          value="fermer"
+          value="Fermer"
           id="reset"
         />
         </div>

@@ -161,24 +161,14 @@ function sendForm(e) {
   if (!isFormValid) {
     modalbg.style.display = "block";
     confirmedModalBg.style.display = "none";
-  } else if (isFormValid) {
+  } else {
     let modalbg = document.querySelector(".bground");
-    let thanksModalBg = document.querySelector(".modal-confirm");
+    let confirmedModalBg = document.querySelector(".modal-confirm");
     modalbg.style.display = "none";
     confirmedModalBg.style.display = "block";
+    form.reset();
   }
   return isFormValid;
 }
 //send form event
 form.addEventListener("submit", sendForm);
-
-//reset form after validation
-const closeReset = document.getElementById("close-reset");
-const resetBtn = document.getElementById("reset");
-const entries = document.querySelectorAll(".entries");
-const reset = () => {
-  entries.forEach((inpt) => (inpt.value = ""));
-  confirmedModalBg.style.display = "none";
-};
-closeReset.addEventListener("click", reset);
-resetBtn.addEventListener("click", reset);

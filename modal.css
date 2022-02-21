@@ -438,13 +438,12 @@ input {
   margin-bottom: 10px;
 }
 .hero-content {
-  padding: 51px 67px;
+  padding: 50px 70px;
   grid-column: span 4;
   background: #232323;
   color: #fff;
   position: relative;
   text-align: left;
-  min-width: 424px;
 }
 .hero-content::after {
   content: "";
@@ -465,7 +464,7 @@ input {
   white-space: nowrap;
 }
 .hero-text {
-  width: 146%;
+  width: 147%;
   font-weight: normal;
   margin-top: 57px;
   padding: 0;
@@ -519,11 +518,11 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 2.5rem;
+    font-size: 2rem;
     white-space: normal;
   }
   .hero-text {
-    width: 90%;
+    width: 100%;
     font-size: 1.5rem;
   }
   .hero-img img {

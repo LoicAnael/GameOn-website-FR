@@ -61,7 +61,7 @@ const errLocation = document.querySelector(".err-location");
 const errCondition = document.querySelector(".err-condition");
 //error message if all fields are not filled
 
-//error message for incorrect inputs
+//error message for incorrect input name
 const errorFocusName = () => {
   let isFormValid = true;
   if (!namesRegex.test(prenom.value)) {
@@ -75,6 +75,7 @@ const errorFocusName = () => {
   }
   return isFormValid;
 };
+//error message for incorrect input lastname
 const errorFocusSurname = () => {
   let isFormValid = true;
   if (!namesRegex.test(nom.value)) {
@@ -88,6 +89,7 @@ const errorFocusSurname = () => {
   }
   return isFormValid;
 };
+//error message for incorrect input E-mail
 const errorFocusEmail = () => {
   let isFormValid = true;
   if (!emailRegex.test(email.value)) {
@@ -100,6 +102,7 @@ const errorFocusEmail = () => {
   }
   return isFormValid;
 };
+//error message for incorrect input bithdate
 const errorFocusBirthdate = () => {
   let isFormValid = true;
   if (!birthdate.value) {
@@ -112,6 +115,7 @@ const errorFocusBirthdate = () => {
   }
   return isFormValid;
 };
+//error message for incorrect input number
 const errorFocusNumber = () => {
   let isFormValid = true;
   if (!numbersRegex.test(quantity.value)) {
@@ -124,6 +128,7 @@ const errorFocusNumber = () => {
   }
   return isFormValid;
 };
+//error message for unchecked location
 const errorFocusLocation = () => {
   let isFormValid = true;
   const locations = document.querySelectorAll("[name=location]:checked");
@@ -135,6 +140,7 @@ const errorFocusLocation = () => {
   }
   return isFormValid;
 };
+//error message for unchecked condition
 const errorFocusCondition = () => {
   let isFormValid = true;
   if (!userCondition.checked) {
@@ -146,7 +152,7 @@ const errorFocusCondition = () => {
   }
   return isFormValid;
 };
-
+//submit form function
 function sendForm(e) {
   e.preventDefault();
   const isFormValid =

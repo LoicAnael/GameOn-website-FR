@@ -70,7 +70,6 @@
                   type="text"
                   id="first"
                   name="first"  
-                  onblur="errorFocusName()"      
                   /><br>
                   <small class="err-first  err-message"></small>
               </div>
@@ -82,7 +81,6 @@
                   type="text"
                   id="last"
                   name="last"
-                  onblur="errorFocusSurname()"
                 /><br>
                 <small class="err-last err-message"></small>
               </div>
@@ -93,8 +91,7 @@
                   class="text-control entries"
                   type="email"
                   id="email"
-                  name="email"      
-                  onblur="errorFocusEmail()"          
+                  name="email"               
                 /><br>
                 <small class="err-email err-message"></small>
               </div>
@@ -106,14 +103,13 @@
                   type="date"
                   id="birthdate"
                   name="birthdate"
-                  onblur="errorFocusBirthdate()"
                 /><br>
                 <small class="err-birthdate err-message"></small>
               </div>
               <div
                 class="formData">
                 <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                <input type="number" onblur="errorFocusNumber()" class="text-control entries" id="quantity" name="quantity" min="0" max="99" pattern="[0-9]{1,}">
+                <input type="number" class="text-control entries" id="quantity" name="quantity" min="0" max="99" pattern="[0-9]{1,}">
                 <small class="err-number err-message"></small>
               </div>
               <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>

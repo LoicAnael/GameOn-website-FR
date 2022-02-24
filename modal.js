@@ -66,29 +66,31 @@ const errorFocusName = () => {
   let isFormValid = true;
   if (!namesRegex.test(prenom.value)) {
     errFistName.innerHTML =
-      "Veuillez entrer au minimum 2 caractères pour ce champ";
+      "Veuillez entrer au minimum 2 caractères pour ce champ dont les lettres";
     prenom.style.borderColor = "#F00";
     isFormValid = false;
   } else {
     errFistName.innerHTML = "";
-    prenom.style.borderColor = "#FFF";
+    prenom.style.borderColor = "green";
   }
   return isFormValid;
 };
+prenom.addEventListener("input", errorFocusName);
 //error message for incorrect input lastname
 const errorFocusSurname = () => {
   let isFormValid = true;
   if (!namesRegex.test(nom.value)) {
     errLastName.innerHTML =
-      "Veuillez entrer au minimum 2 caractères pour ce champ";
+      "Veuillez entrer au minimum 2 caractères pour ce champ dont les lettres";
     nom.style.borderColor = "#F00";
     isFormValid = false;
   } else {
     errLastName.innerHTML = "";
-    nom.style.borderColor = "#FFF";
+    nom.style.borderColor = "green";
   }
   return isFormValid;
 };
+nom.addEventListener("input", errorFocusSurname);
 //error message for incorrect input E-mail
 const errorFocusEmail = () => {
   let isFormValid = true;
@@ -98,10 +100,11 @@ const errorFocusEmail = () => {
     isFormValid = false;
   } else {
     errEmail.innerHTML = "";
-    email.style.borderColor = "#FFF";
+    email.style.borderColor = "green";
   }
   return isFormValid;
 };
+email.addEventListener("input", errorFocusEmail);
 //error message for incorrect input bithdate
 const errorFocusBirthdate = () => {
   let isFormValid = true;
@@ -111,10 +114,11 @@ const errorFocusBirthdate = () => {
     isFormValid = false;
   } else {
     errBirthdate.innerHTML = "";
-    birthdate.style.borderColor = "#FFF";
+    birthdate.style.borderColor = "green";
   }
   return isFormValid;
 };
+birthdate.addEventListener("input", errorFocusBirthdate);
 //error message for incorrect input number
 const errorFocusNumber = () => {
   let isFormValid = true;
@@ -124,10 +128,11 @@ const errorFocusNumber = () => {
     isFormValid = false;
   } else {
     errNumber.innerHTML = "";
-    quantity.style.borderColor = "#FFF";
+    quantity.style.borderColor = "green";
   }
   return isFormValid;
 };
+quantity.addEventListener("input", errorFocusNumber);
 //error message for unchecked location
 const errorFocusLocation = () => {
   let isFormValid = true;
@@ -155,14 +160,13 @@ const errorFocusCondition = () => {
 //submit form function
 function sendForm(e) {
   e.preventDefault();
-  const isFormValid =
-    errorFocusName() &&
-    errorFocusSurname() &&
-    errorFocusEmail() &&
-    errorFocusBirthdate() &&
-    errorFocusNumber() &&
-    errorFocusCondition() &&
-    errorFocusLocation();
+  const isFormValid = errorFocusName();
+  errorFocusSurname();
+  errorFocusEmail();
+  errorFocusBirthdate();
+  errorFocusNumber();
+  errorFocusCondition();
+  errorFocusLocation();
   console.log(isFormValid);
   if (!isFormValid) {
     modalbg.style.display = "block";
@@ -172,8 +176,8 @@ function sendForm(e) {
     let confirmedModalBg = document.querySelector(".modal-confirm");
     modalbg.style.display = "none";
     confirmedModalBg.style.display = "block";
-    form.reset();
   }
+  form.reset();
   return isFormValid;
 }
 //send form event

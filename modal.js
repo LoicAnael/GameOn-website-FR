@@ -160,14 +160,13 @@ const errorFocusCondition = () => {
 //submit form function
 function sendForm(e) {
   e.preventDefault();
-  const isFormValid = errorFocusName();
-  errorFocusSurname();
-  errorFocusEmail();
-  errorFocusBirthdate();
-  errorFocusNumber();
-  errorFocusCondition();
-  errorFocusLocation();
-  console.log(isFormValid);
+  isFormValid = errorFocusName();
+  isFormValid = errorFocusSurname();
+  isFormValid = errorFocusEmail();
+  isFormValid = errorFocusBirthdate();
+  isFormValid = errorFocusNumber();
+  isFormValid = errorFocusCondition();
+  isFormValid = errorFocusLocation();
   if (!isFormValid) {
     modalbg.style.display = "block";
     confirmedModalBg.style.display = "none";
@@ -176,8 +175,9 @@ function sendForm(e) {
     let confirmedModalBg = document.querySelector(".modal-confirm");
     modalbg.style.display = "none";
     confirmedModalBg.style.display = "block";
+    inputs.forEach((element) => (element.style.borderColor = "white"));
+    form.reset();
   }
-  form.reset();
   return isFormValid;
 }
 //send form event
